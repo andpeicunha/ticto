@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Container } from './Styled'
+import { Container } from './src/components/StList'
 import List from './src/components/List'
 
 function Home() {

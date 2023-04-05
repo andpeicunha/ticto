@@ -6,7 +6,7 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
+import { ServerStyleSheet, ThemeProvider } from 'styled-components'
 
 export default class MyDocument extends Document {
   static async getInitialProps(
@@ -41,10 +41,12 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head />
-        <body>
-          <Main />
-          <NextScript />
-        </body>
+        <ThemeProvider theme={{}}>
+          <body>
+            <Main />
+            <NextScript />
+          </body>
+        </ThemeProvider>
       </Html>
     )
   }

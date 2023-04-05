@@ -1,10 +1,12 @@
 {
   "root": true,
   "extends": [
-    "next/core-web-vitals",
-    "plugin:jest-dom/recommended",
+    "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "prettier",
+    "prettier/@typescript-eslint",
+    "next/core-web-vitals",
+    "plugin:jest-dom/recommended"
   ],
   "rules": {
     "@typescript-eslint/no-unused-vars": "error"
