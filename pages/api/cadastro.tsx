@@ -1,3 +1,5 @@
+import { NextApiRequest, NextApiResponse } from 'next'
+
 interface Registro {
   id: number
   descricao: string
@@ -43,7 +45,7 @@ const findRegistroIndex = (id: number): number => {
   return registros.findIndex((registro) => registro.id === id)
 }
 
-export default (req: any, res: any) => {
+export default (req: NextApiRequest, res: NextApiResponse) => {
   const { method, query, body } = req
 
   if (method === 'GET') {
