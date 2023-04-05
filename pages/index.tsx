@@ -1,6 +1,5 @@
-import Head from 'next/head'
-import Container from './src/components/StList'
-import List from './src/components/List'
+import Head from "next/head";
+import List from "./src/components/Lista";
 
 function Home() {
   return (
@@ -11,9 +10,8 @@ function Home() {
         {/* Adicione mais tags meta, links para estilos, scripts etc. aqui */}
       </Head>
       <List />
-      <Container />
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;
