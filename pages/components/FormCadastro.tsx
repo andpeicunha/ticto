@@ -25,33 +25,33 @@ const FormCadastro: React.FC<FormCadastroProps> = (props) => {
     setTipo(tipoSelecionado);
   };
 
-  const handleSubmitChangeValue = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    try {
-      const response = await fetch(`/api/MondoDB/${props._id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          descricao,
-          valor,
-          categoria,
-          tipo,
-        }),
-      });
+  // const handleSubmitChangeValue = async (event: FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+  //   try {
+  //     const response = await fetch(`/api/MondoDB/${props._id}`, {
+  //       method: "PUT",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         descricao,
+  //         valor,
+  //         categoria,
+  //         tipo,
+  //       }),
+  //     });
 
-      if (response.ok) {
-        const novoRegistro = await response.json();
-        console.log("Registro atualizado:", novoRegistro);
-        // aqui você pode fazer alguma ação, como redirecionar o usuário para a página de lista de registros
-      } else {
-        console.error("Erro ao atualizar registro:", response.statusText);
-      }
-    } catch (error) {
-      console.error("Erro ao atualizar registro:", error);
-    }
-  };
+  //     if (response.ok) {
+  //       const novoRegistro = await response.json();
+  //       console.log("Registro atualizado:", novoRegistro);
+  //       // aqui você pode fazer alguma ação, como redirecionar o usuário para a página de lista de registros
+  //     } else {
+  //       console.error("Erro ao atualizar registro:", response.statusText);
+  //     }
+  //   } catch (error) {
+  //     console.error("Erro ao atualizar registro:", error);
+  //   }
+  // };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
