@@ -1,4 +1,4 @@
-const THEME = {
+export const THEME = {
   colors: {
     roxo900: "#30107d",
     roxo700: "#401a9b",
@@ -35,4 +35,3 @@ const THEME = {
     mobile: "(max-width: 767px)",
   },
 };
-export default THEME;
