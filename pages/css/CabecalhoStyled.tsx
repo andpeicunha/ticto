@@ -7,7 +7,7 @@ const HeaderContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   height: 130px;
   padding: 0 ${THEME.spacing.large}rem;
   z-index: 10;
@@ -72,7 +72,7 @@ export const FaixaRoxa = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 320px;
   background-color: ${THEME.colors.roxo900};
   z-index: 0;

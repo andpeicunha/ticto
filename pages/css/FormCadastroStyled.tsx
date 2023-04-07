@@ -9,7 +9,7 @@ const FormContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   z-index: 200;
 `;
 export default FormContainer;
@@ -30,7 +30,7 @@ export const BackgroundOpacity = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background-color: ${THEME.colors.cinza700};
   opacity: 0.8;

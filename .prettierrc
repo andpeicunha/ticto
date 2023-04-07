@@ -7,7 +7,7 @@
   "arrowParens": "always",
   "semi": true,
   "tabWidth": 2,
-  "printWidth": 120,
+  "printWidth": 100,
   "trailing-spaces": true,
   "eol-last": true,
   "implicit-arrow-linebreak": "avoid"

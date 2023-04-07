@@ -3,7 +3,7 @@ import THEME from '@/pages/css/ThemeStyled';
 
 export const BalanceItens = styled.div`
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 130px;
   padding: 0 ${THEME.spacing.xSmall}rem;
 

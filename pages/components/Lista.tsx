@@ -4,36 +4,22 @@ import Header from './Cabecalho';
 import Balance from './Balance';
 import FormCadastro from './FormCadastro';
 import Item from './ListView';
-import { ItemList } from '../css/ListViewStyled';
-
-export interface IRegistros {
-  descricao: string;
-  valor: string;
-  categoria: string;
-  tipo: string;
-  _id: string;
-  id?: string;
-  onClick?: () => void;
-}
+import { IRegistros } from '../types/Types';
+import ItemList from '../css/ListaStyled';
 
 export default function List() {
   const [formVisible, setFormVisible] = useState(false);
   const [somaEntradas, setSomaEntradas] = useState(0);
   const [somaSaidas, setSomaSaidas] = useState(0);
 
-  const { data: registros } = useQuery<IRegistros[]>(
-    ['Registros'],
-    async () => {
-      const response = await fetch('/api/MongoDB');
-      const data = await response.json();
-      return data.cadastros;
-    },
-  );
+  const { data: registros } = useQuery<IRegistros[]>(['Registros'], async () => {
+    const response = await fetch('/api/MongoDB');
+    const data = await response.json();
+    return data.cadastros;
+  });
 
   useMemo(() => {
-    const valoresPositivos = registros?.filter(
-      (item) => item.tipo === 'Entrada',
-    );
+    const valoresPositivos = registros?.filter((item) => item.tipo === 'Entrada');
     const soma = valoresPositivos?.reduce(
       (acumulador, item) => acumulador + Number(item.valor.replace(',', '.')),
       0,
@@ -76,25 +62,18 @@ export default function List() {
         totalSaidas={somaSaidas >= 0 ? somaSaidas : 0}
       />
       <ItemList>
-        {registros?.map(
-          (item: {
-            _id: string;
-            descricao: string;
-            valor: string;
-            categoria: string;
-          }) => (
-            <Item
-              key={item._id}
-              id={item._id}
-              descricao={item.descricao}
-              valor={item.valor}
-              categoria={item.categoria}
-              onClick={handleClickForm}
-              tipo=""
-              _id=""
-            />
-          ),
-        )}
+        {registros?.map((item: IRegistros) => (
+          <Item
+            key={item._id}
+            id={item._id}
+            descricao={item.descricao}
+            valor={item.valor}
+            categoria={item.categoria}
+            tipo={item.tipo}
+            onClick={handleClickForm}
+            _id=""
+          />
+        ))}
       </ItemList>
       {formVisible && <FormCadastro onClick={hideForm} />}
     </>
