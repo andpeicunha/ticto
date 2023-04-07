@@ -65,7 +65,7 @@ export default function List() {
 
   return (
     <>
-      <Header onClick={showForm} />
+      <Header onClick={showForm} _id={""} />
       <Balance totalEntradas={somaEntradas >= 0 ? somaEntradas : 0} totalSaidas={somaSaidas >= 0 ? somaSaidas : 0} />
       <ItemList>
         {registros?.map((item: { _id: any; descricao: string; valor: string; categoria: string }) => (
@@ -81,7 +81,7 @@ export default function List() {
           />
         ))}
       </ItemList>
-      {formVisible && <FormCadastro onClick={hideForm} />}
+      {formVisible && <FormCadastro onClick={hideForm} _id="" />}
     </>
   );
 }

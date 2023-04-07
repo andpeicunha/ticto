@@ -13,19 +13,15 @@ const FormCadastro: React.FC<FormCadastroProps> = (props) => {
   const [tipo, setTipo] = useState("");
 
   const handleDescricaoChange = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log("Descr...", event.target.value);
     setDescricao(event.target.value);
   };
   const handleValorChange = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log("Valor...", event.target.value);
     setValor(event.target.value);
   };
   const handleCategoriaChange = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log("Categoria...", event.target.value);
     setCategoria(event.target.value);
   };
   const handleTipoChange = (tipoSelecionado: string) => {
-    console.log("Tipo...", tipoSelecionado);
     setTipo(tipoSelecionado);
   };
 
@@ -59,7 +55,6 @@ const FormCadastro: React.FC<FormCadastroProps> = (props) => {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     try {
       const response = await fetch("/api/MongoDB", {
         method: "POST",
@@ -104,18 +99,18 @@ const FormCadastro: React.FC<FormCadastroProps> = (props) => {
 
             <button
               type="button"
-              id="entrada"
-              className={tipo === "entrada" ? "active" : ""}
-              onClick={() => handleTipoChange("entrada")}
+              id="Entrada"
+              className={tipo === "Entrada" ? "active" : ""}
+              onClick={() => handleTipoChange("Entrada")}
             >
               Entrada
             </button>
 
             <button
               type="button"
-              id="saida"
-              className={tipo === "saida" ? "active" : ""}
-              onClick={() => handleTipoChange("saida")}
+              id="Saida"
+              className={tipo === "Saida" ? "active" : ""}
+              onClick={() => handleTipoChange("Saida")}
             >
               Saída
             </button>
