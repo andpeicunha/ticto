@@ -1,0 +1,3 @@
+# .eslintignore
+pages/api/MongoDB.js
+pages/models/CadastroModel.js

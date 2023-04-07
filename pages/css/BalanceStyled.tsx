@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { THEME } from "@/pages/css/ThemeStyled";
+import styled from 'styled-components';
+import THEME from '@/pages/css/ThemeStyled';
 
 export const BalanceItens = styled.div`
   position: relative;

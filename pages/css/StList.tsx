@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Container = styled.div`
   background-color: blue;
@@ -6,5 +6,5 @@ const Container = styled.div`
   height: 10vh;
   display: flex;
   flex-direction: column;
-`
-export default Container
+`;
+export default Container;

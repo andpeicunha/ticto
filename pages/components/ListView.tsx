@@ -1,19 +1,17 @@
-import React from "react";
-import SContainer from "../css/ListViewStyled";
-import { IRegistros } from "./Lista";
+import React from 'react';
+import SContainer from '../css/ListViewStyled';
+import { IRegistros } from './Lista';
 
-const Item: React.FC<IRegistros> = (props) => {
+export default function Item({ descricao, valor, categoria, onClick }: IRegistros) {
   return (
-    <>
-      <SContainer>
-        <div>{props.descricao}</div>
-        <div>{props.valor}</div>
-        <div>{props.categoria}</div>
-        <button onClick={props.onClick}>Editar</button>
-        <button>Excluir</button>
-      </SContainer>
-    </>
+    <SContainer>
+      <div>{descricao}</div>
+      <div>{valor}</div>
+      <div>{categoria}</div>
+      <button type="button" onClick={onClick}>
+        Editar
+      </button>
+      <button type="button">Excluir</button>
+    </SContainer>
   );
-};
-
-export default Item;
+}

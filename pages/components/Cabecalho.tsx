@@ -1,9 +1,13 @@
-import React from "react";
-import HeaderContainer, { ButtonCadastro, FaixaRoxa, StyledLogo } from "../css/CabecalhoStyled";
-import LogoTicto from "public/image/LogoTicto";
-import { FormCadastroProps } from "./FormCadastro";
+import React from 'react';
+import LogoTicto from 'public/image/LogoTicto';
+import { FormCadastroProps } from './FormCadastro';
+import HeaderContainer, {
+  ButtonCadastro,
+  FaixaRoxa,
+  StyledLogo,
+} from '../css/CabecalhoStyled';
 
-const Header: React.FC<FormCadastroProps> = (props) => {
+export default function Header({ onClick }: FormCadastroProps) {
   return (
     <>
       <FaixaRoxa />
@@ -11,12 +15,10 @@ const Header: React.FC<FormCadastroProps> = (props) => {
         <StyledLogo data-testid="logotipo">
           <LogoTicto />
         </StyledLogo>
-        <ButtonCadastro onClick={props.onClick} data-testid="botao-nova-transacao">
+        <ButtonCadastro onClick={onClick} data-testid="botao-nova-transacao">
           Nova Transação
         </ButtonCadastro>
       </HeaderContainer>
     </>
   );
-};
-
-export default Header;
+}

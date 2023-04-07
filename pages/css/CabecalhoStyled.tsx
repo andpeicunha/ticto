@@ -1,5 +1,5 @@
-import {THEME} from "@/pages/css/ThemeStyled";
-import styled from "styled-components";
+import THEME from '@/pages/css/ThemeStyled';
+import styled from 'styled-components';
 
 const HeaderContainer = styled.div`
   position: relative;

@@ -1,0 +1,14 @@
+{
+  "endOfLine": "auto",
+  "singleQuote": true,
+  "jsxSingleQuote": false,
+  "trailingComma": "all",
+  "vueIndentScriptAndStyle": true,
+  "arrowParens": "always",
+  "semi": true,
+  "tabWidth": 2,
+  "printWidth": 120,
+  "trailing-spaces": true,
+  "eol-last": true,
+  "implicit-arrow-linebreak": "avoid"
+}

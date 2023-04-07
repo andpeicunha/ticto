@@ -1,16 +1,18 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
-import FormContainer, { BackgroundOpacity, FormBox } from "../css/FormCadastroStyled";
+import React, { ChangeEvent, FormEvent, useState } from 'react';
+import FormContainer, {
+  BackgroundOpacity,
+  FormBox,
+} from '../css/FormCadastroStyled';
 
 export interface FormCadastroProps {
   onClick: () => void;
-  _id: string;
 }
 
-const FormCadastro: React.FC<FormCadastroProps> = (props) => {
-  const [descricao, setDescricao] = useState("");
-  const [valor, setValor] = useState("");
-  const [categoria, setCategoria] = useState("");
-  const [tipo, setTipo] = useState("");
+export default function FormCadastro({ onClick }: FormCadastroProps) {
+  const [descricao, setDescricao] = useState('');
+  const [valor, setValor] = useState('');
+  const [categoria, setCategoria] = useState('');
+  const [tipo, setTipo] = useState('');
 
   const handleDescricaoChange = (event: ChangeEvent<HTMLInputElement>) => {
     setDescricao(event.target.value);
@@ -28,10 +30,10 @@ const FormCadastro: React.FC<FormCadastroProps> = (props) => {
   // const handleSubmitChangeValue = async (event: FormEvent<HTMLFormElement>) => {
   //   event.preventDefault();
   //   try {
-  //     const response = await fetch(`/api/MondoDB/${props._id}`, {
-  //       method: "PUT",
+  //     const response = await fetch(`/api/MondoDB`, {
+  //       method: 'PUT',
   //       headers: {
-  //         "Content-Type": "application/json",
+  //         'Content-Type': 'application/json',
   //       },
   //       body: JSON.stringify({
   //         descricao,
@@ -43,23 +45,23 @@ const FormCadastro: React.FC<FormCadastroProps> = (props) => {
 
   //     if (response.ok) {
   //       const novoRegistro = await response.json();
-  //       console.log("Registro atualizado:", novoRegistro);
-  //       // aqui você pode fazer alguma ação, como redirecionar o usuário para a página de lista de registros
+  //       console.log('Registro atualizado:', novoRegistro);
+  //       // redirecionar o usuário para a página de lista de registros
   //     } else {
-  //       console.error("Erro ao atualizar registro:", response.statusText);
+  //       console.log('Erro ao atualizar registro:', response.statusText);
   //     }
   //   } catch (error) {
-  //     console.error("Erro ao atualizar registro:", error);
+  //     console.log('Erro ao atualizar registro:', error);
   //   }
   // };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const response = await fetch("/api/MongoDB", {
-        method: "POST",
+      const response = await fetch('/api/MongoDB', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           descricao,
@@ -71,13 +73,12 @@ const FormCadastro: React.FC<FormCadastroProps> = (props) => {
 
       if (response.ok) {
         const novoRegistro = await response.json();
-        console.log("Novo registro cadastrado:", novoRegistro);
-        // aqui você pode fazer alguma ação, como redirecionar o usuário para a página de lista de registros
+        console.log('Novo registro cadastrado:', novoRegistro);
       } else {
-        console.error("Erro ao cadastrar novo registro:", response.statusText);
+        console.log('Erro ao cadastrar novo registro:', response.statusText);
       }
     } catch (error) {
-      console.error("Erro ao cadastrar novo registro:", error);
+      console.log('Erro ao cadastrar novo registro:', error);
     }
   };
 
@@ -95,13 +96,19 @@ const FormCadastro: React.FC<FormCadastroProps> = (props) => {
               placeholder="Descrição"
               onChange={handleDescricaoChange}
             />
-            <input type="text" name="valor" id="valor" placeholder="Preço" onChange={handleValorChange} />
+            <input
+              type="text"
+              name="valor"
+              id="valor"
+              placeholder="Preço"
+              onChange={handleValorChange}
+            />
 
             <button
               type="button"
               id="Entrada"
-              className={tipo === "Entrada" ? "active" : ""}
-              onClick={() => handleTipoChange("Entrada")}
+              className={tipo === 'Entrada' ? 'active' : ''}
+              onClick={() => handleTipoChange('Entrada')}
             >
               Entrada
             </button>
@@ -109,22 +116,26 @@ const FormCadastro: React.FC<FormCadastroProps> = (props) => {
             <button
               type="button"
               id="Saida"
-              className={tipo === "Saida" ? "active" : ""}
-              onClick={() => handleTipoChange("Saida")}
+              className={tipo === 'Saida' ? 'active' : ''}
+              onClick={() => handleTipoChange('Saida')}
             >
               Saída
             </button>
 
-            <input name="categoria" id="categoria" onChange={handleCategoriaChange} />
+            <input
+              name="categoria"
+              id="categoria"
+              onChange={handleCategoriaChange}
+            />
             <button type="submit">Cadastrar</button>
           </form>
 
-          <button onClick={props.onClick}>Fechar</button>
+          <button type="button" onClick={onClick}>
+            Fechar
+          </button>
         </FormBox>
       </FormContainer>
       <BackgroundOpacity />
     </>
   );
-};
-
-export default FormCadastro;
+}

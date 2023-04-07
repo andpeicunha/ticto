@@ -1,6 +1,7 @@
-import Document, { DocumentContext, DocumentInitialProps, Html, Head, Main, NextScript } from "next/document";
-import { ServerStyleSheet, ThemeProvider } from "styled-components";
-import { THEME } from "@/pages/css/ThemeStyled";
+import React from 'react';
+import Document, { DocumentContext, DocumentInitialProps, Html, Head, Main, NextScript } from 'next/document';
+import { ServerStyleSheet, ThemeProvider } from 'styled-components';
+import THEME from '@/pages/css/ThemeStyled';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {

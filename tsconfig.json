@@ -16,18 +16,19 @@
     "incremental": true,
     "baseUrl": ".",
     "types": ["node"],
-    // "plugins": [
-    //   {
-    //     "name": "@styled/typescript-styled-plugin",
-    //     "tags": ["styled", "css", "sty"]
-    //   }
-    // ],
     "paths": {
       "@/components/*": ["components/*"],
       "@/pages/*": ["pages/*"],
       "@/styles/*": ["styles/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "types.d.ts", "pages/lib/dbConnect.js", "pages/api/Cadastro.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "types.d.ts",
+    "pages/lib/dbConnect.js",
+    "pages/api/Cadastro.js"
+  ],
   "exclude": ["node_modules", "cypress", "__tests__"]
 }

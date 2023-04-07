@@ -1,5 +1,4 @@
 /**
- * 
  * @param {import ('next).NextApiRequest} req
  * @param {import ('next').NextApiResponse} res
  */

@@ -1,0 +1,20 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb",
+    "airbnb-typescript"
+    // "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "linebreak-style": ["error", "windows"],
+    "@typescript-eslint/quotes": "off",
+    "no-console": "off",
+    "object-curly-newline": "off",
+    "implicit-arrow-linebreak": 0,
+    "react/jsx-props-no-spreading": "off",
+    "no-underscore-dangle": "off"
+  },
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  }
+}
