@@ -43,24 +43,3 @@ export default async function Cadastro(req, res) {
             break;
     }
 }
-
-
-
-// export default async function Cadastro(req, res) {
-//     try {
-//         const { descricao, valor, categoria, tipo } = req.body;
-//         console.log('# CONECTANDO');
-
-//         await connectMongo();
-//         console.log('## CONECTADO!!!');
-
-//         const cadastro = await CadastroModel.create(req.body)
-//         console.log('### DOCUMENTO CRIADO')
-
-//         res.json({ cadastro })
-//     } catch (error) {
-//         console.log(error);
-//         res.json({ error });
-//     }
-
-// }
