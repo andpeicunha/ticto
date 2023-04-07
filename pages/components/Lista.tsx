@@ -1,12 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import Item from "./ListView";
 import Header from "./Cabecalho";
 import Balance from "./Balance";
 import FormCadastro from "./FormCadastro";
 import { ItemList } from "../css/ListViewStyled";
-import dbConnect from "../lib/dbConnect";
-import CadastroModel from "../models/CadastroModel";
 
 export interface IRegistros {
   descricao: string;
@@ -23,11 +21,7 @@ export default function List() {
   const [somaEntradas, setSomaEntradas] = useState(0);
   const [somaSaidas, setSomaSaidas] = useState(0);
 
-  const {
-    isLoading,
-    error,
-    data: registros,
-  } = useQuery<IRegistros[]>(["Registros"], async () => {
+  const { data: registros } = useQuery<IRegistros[]>(["Registros"], async () => {
     const response = await fetch("/api/MongoDB");
     const data = await response.json();
     return data.cadastros;

@@ -1,4 +1,3 @@
-import Head from "next/head";
 import List from "./components/Lista";
 
 function Home() {
