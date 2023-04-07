@@ -28,16 +28,16 @@ export default function List() {
   });
 
   const calcularSomaEntradas = useMemo(() => {
-    let valoresPositivos = registros?.filter((item) => item.tipo === "Entrada");
-    let soma = valoresPositivos?.reduce((acumulador, item) => acumulador + Number(item.valor.replace(",", ".")), 0);
-    let somaNumber = Number(soma);
+    const valoresPositivos = registros?.filter((item) => item.tipo === "Entrada");
+    const soma = valoresPositivos?.reduce((acumulador, item) => acumulador + Number(item.valor.replace(",", ".")), 0);
+    const somaNumber = Number(soma);
     setSomaEntradas(somaNumber);
   }, [registros]);
 
   const calcularSomaSaidas = useMemo(() => {
-    let valores = registros?.filter((item) => item.tipo === "Saida");
-    let soma = valores?.reduce((acumulador, item) => acumulador + Number(item.valor.replace(",", ".")), 0);
-    let somaNumber = Number(soma);
+    const valores = registros?.filter((item) => item.tipo === "Saida");
+    const soma = valores?.reduce((acumulador, item) => acumulador + Number(item.valor.replace(",", ".")), 0);
+    const somaNumber = Number(soma);
     setSomaSaidas(somaNumber);
   }, [registros]);
 
@@ -62,7 +62,7 @@ export default function List() {
       <Header onClick={showForm} _id={""} />
       <Balance totalEntradas={somaEntradas >= 0 ? somaEntradas : 0} totalSaidas={somaSaidas >= 0 ? somaSaidas : 0} />
       <ItemList>
-        {registros?.map((item: { _id: any; descricao: string; valor: string; categoria: string }) => (
+        {registros?.map((item: { _id: string; descricao: string; valor: string; categoria: string }) => (
           <Item
             key={item._id}
             id={item._id}
