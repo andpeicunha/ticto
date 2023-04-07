@@ -9,29 +9,21 @@ export default async function Cadastro(req, res) {
     switch (req.method) {
         case 'GET':
             try {
-                console.log('# CONECTANDO');
                 await connectMongo();
-                console.log('## CONECTADO!!!');
                 const cadastros = await CadastroModel.find();
-                console.log('### DOCUMENTOS ENCONTRADOS');
                 res.json({ cadastros });
             } catch (error) {
-                console.log(error);
                 res.json({ error });
             }
             break;
 
         case 'POST':
             try {
-                const { descricao, valor, categoria, tipo } = req.body;
-                console.log('# CONECTANDO');
+                // const { descricao, valor, categoria, tipo } = req.body;
                 await connectMongo();
-                console.log('## CONECTADO!!!');
                 const cadastro = await CadastroModel.create(req.body);
-                console.log('### DOCUMENTO CRIADO');
                 res.json({ cadastro });
             } catch (error) {
-                console.log(error);
                 res.json({ error });
             }
             break;
@@ -42,14 +34,10 @@ export default async function Cadastro(req, res) {
         case 'PUT':
             try {
                 const { descricao, valor, categoria, tipo } = req.body;
-                console.log('# CONECTANDO');
                 await connectMongo();
-                console.log('## CONECTADO!!!');
                 const registro = await CadastroModel.findByIdAndUpdate(req.params.id, { descricao, valor, categoria, tipo }, { new: true });
-                console.log('### DOCUMENTO ATUALIZADO');
                 res.json({ registro });
             } catch (error) {
-                console.log(error);
                 res.json({ error });
             }
             break;
