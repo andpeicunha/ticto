@@ -27,14 +27,14 @@ export default function List() {
     return data.cadastros;
   });
 
-  const calcularSomaEntradas = useMemo(() => {
+  useMemo(() => {
     const valoresPositivos = registros?.filter((item) => item.tipo === "Entrada");
     const soma = valoresPositivos?.reduce((acumulador, item) => acumulador + Number(item.valor.replace(",", ".")), 0);
     const somaNumber = Number(soma);
     setSomaEntradas(somaNumber);
   }, [registros]);
 
-  const calcularSomaSaidas = useMemo(() => {
+  useMemo(() => {
     const valores = registros?.filter((item) => item.tipo === "Saida");
     const soma = valores?.reduce((acumulador, item) => acumulador + Number(item.valor.replace(",", ".")), 0);
     const somaNumber = Number(soma);
