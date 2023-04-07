@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import THEME from "@/pages/css/ThemeStyled";
+import {THEME} from "@/pages/css/ThemeStyled";
 
 const FormContainer = styled.div`
   position: absolute;

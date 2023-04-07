@@ -1,4 +1,4 @@
-import THEME from "@/pages/css/ThemeStyled";
+import {THEME} from "@/pages/css/ThemeStyled";
 import styled from "styled-components";
 
 const HeaderContainer = styled.div`
