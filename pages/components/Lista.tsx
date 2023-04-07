@@ -14,6 +14,8 @@ export interface IRegistros {
   categoria: string;
   tipo: string;
   _id: string;
+  id?: string;
+  onClick?: () => void;
 }
 
 export default function List() {
@@ -74,6 +76,8 @@ export default function List() {
             valor={item.valor}
             categoria={item.categoria}
             onClick={handleClickForm}
+            tipo={""}
+            _id={""}
           />
         ))}
       </ItemList>

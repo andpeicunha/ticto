@@ -1,7 +1,8 @@
 import React from "react";
 import SContainer from "../css/ListViewStyled";
+import { IRegistros } from "./Lista";
 
-const Item: React.FC<IRegistro> = (props) => {
+const Item: React.FC<IRegistros> = (props) => {
   return (
     <>
       <SContainer>
