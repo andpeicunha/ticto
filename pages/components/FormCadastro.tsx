@@ -3,6 +3,7 @@ import FormContainer, { BackgroundOpacity, FormBox } from "../css/FormCadastroSt
 
 export interface FormCadastroProps {
   onClick: () => void;
+  _id: string;
 }
 
 const FormCadastro: React.FC<FormCadastroProps> = (props) => {
@@ -28,11 +29,39 @@ const FormCadastro: React.FC<FormCadastroProps> = (props) => {
     setTipo(tipoSelecionado);
   };
 
+  const handleSubmitChangeValue = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    try {
+      const response = await fetch(`/api/MondoDB/${props._id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          descricao,
+          valor,
+          categoria,
+          tipo,
+        }),
+      });
+
+      if (response.ok) {
+        const novoRegistro = await response.json();
+        console.log("Registro atualizado:", novoRegistro);
+        // aqui você pode fazer alguma ação, como redirecionar o usuário para a página de lista de registros
+      } else {
+        console.error("Erro ao atualizar registro:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Erro ao atualizar registro:", error);
+    }
+  };
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
-      const response = await fetch("/api/Cadastro", {
+      const response = await fetch("/api/MongoDB", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

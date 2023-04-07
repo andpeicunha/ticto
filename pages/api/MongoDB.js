@@ -20,6 +20,7 @@ export default async function Cadastro(req, res) {
                 res.json({ error });
             }
             break;
+
         case 'POST':
             try {
                 const { descricao, valor, categoria, tipo } = req.body;
@@ -36,6 +37,21 @@ export default async function Cadastro(req, res) {
             break;
         default:
             res.status(405).json({ error: 'Method Not Allowed' });
+            break;
+
+        case 'PUT':
+            try {
+                const { descricao, valor, categoria, tipo } = req.body;
+                console.log('# CONECTANDO');
+                await connectMongo();
+                console.log('## CONECTADO!!!');
+                const registro = await CadastroModel.findByIdAndUpdate(req.params.id, { descricao, valor, categoria, tipo }, { new: true });
+                console.log('### DOCUMENTO ATUALIZADO');
+                res.json({ registro });
+            } catch (error) {
+                console.log(error);
+                res.json({ error });
+            }
             break;
     }
 }
