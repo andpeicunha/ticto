@@ -6,7 +6,7 @@
     // "plugin:prettier/recommended"
   ],
   "rules": {
-    "linebreak-style": ["error", "windows"],
+    "linebreak-style": "off",
     "@typescript-eslint/quotes": "off",
     "no-console": "off",
     "object-curly-newline": "off",
