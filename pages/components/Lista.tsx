@@ -1,5 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import debug from 'debug';
 import Header from './Cabecalho';
 import Balance from './Balance';
 import FormCadastro from './FormCadastro';
@@ -8,15 +9,31 @@ import { IRegistros } from '../types/Types';
 import ItemList from '../css/ListaStyled';
 
 export default function List() {
+  const queryClient = useQueryClient();
   const [formVisible, setFormVisible] = useState(false);
   const [somaEntradas, setSomaEntradas] = useState(0);
   const [somaSaidas, setSomaSaidas] = useState(0);
+  const [itemIdForm, setItemIdForm] = useState('');
 
   const { data: registros } = useQuery<IRegistros[]>(['Registros'], async () => {
     const response = await fetch('/api/MongoDB');
     const data = await response.json();
     return data.cadastros;
   });
+
+  const deleteRegistro = useMutation(
+    async (_id: string) => {
+      const response = await fetch(`/api/MongoDB/?id=${_id}`, { method: 'DELETE' });
+      const data = await response.json();
+      return data;
+    },
+    {
+      onSuccess: () => {
+        debug('Registro excluído com sucesso');
+        queryClient.invalidateQueries({ queryKey: ['Registros'] });
+      },
+    },
+  );
 
   useMemo(() => {
     const valoresPositivos = registros?.filter((item) => item.tipo === 'Entrada');
@@ -38,25 +55,29 @@ export default function List() {
     setSomaSaidas(somaNumber);
   }, [registros]);
 
-  const showForm = useCallback(() => {
-    setFormVisible(true);
-  }, [setFormVisible]);
+  const showForm = useCallback(
+    (_id?: string) => {
+      setFormVisible(true);
+      _id ? setItemIdForm(_id) : setItemIdForm('');
+    },
+    [setFormVisible],
+  );
 
   const hideForm = useCallback(() => {
     setFormVisible(false);
   }, [setFormVisible]);
 
-  const handleClickForm = useCallback(() => {
-    if (formVisible === false) {
-      showForm();
-    } else {
-      hideForm();
-    }
-  }, [formVisible, showForm, hideForm]);
+  const handleDelete = useCallback(
+    (_id?: string) => {
+      _id ? deleteRegistro.mutate(_id) : debug('Registro não encontrado');
+    },
+    [deleteRegistro],
+  );
 
   return (
     <>
       <Header onClick={showForm} />
+
       <Balance
         totalEntradas={somaEntradas >= 0 ? somaEntradas : 0}
         totalSaidas={somaSaidas >= 0 ? somaSaidas : 0}
@@ -70,12 +91,13 @@ export default function List() {
             valor={item.valor}
             categoria={item.categoria}
             tipo={item.tipo}
-            onClick={handleClickForm}
-            _id=""
+            showForm={() => showForm(item._id)}
+            _id={item._id}
+            deleteRegistro={() => handleDelete(item._id)}
           />
         ))}
       </ItemList>
-      {formVisible && <FormCadastro onClick={hideForm} />}
+      {formVisible && <FormCadastro onClick={hideForm} itemIdForm={itemIdForm} />}
     </>
   );
 }

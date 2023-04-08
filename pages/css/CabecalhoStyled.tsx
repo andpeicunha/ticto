@@ -19,7 +19,7 @@ const HeaderContainer = styled.div`
   }
 
   @media ${THEME.media.tablet} {
-    padding: 0 ${THEME.spacing.xSmall}rem;
+    padding: 0 ${THEME.spacing.xxSmall}rem;
   }
 
   @media ${THEME.media.desktop} {
@@ -73,7 +73,18 @@ export const FaixaRoxa = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 320px;
   background-color: ${THEME.colors.roxo900};
   z-index: 0;
+
+  @media ${THEME.media.mobile} {
+    height: 320px;
+  }
+
+  @media ${THEME.media.tablet} {
+    height: 160px;
+  }
+
+  @media ${THEME.media.desktop} {
+    height: 160px;
+  }
 `;

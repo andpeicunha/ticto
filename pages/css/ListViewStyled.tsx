@@ -7,9 +7,7 @@ const SContainer = styled.div`
   align-items: center;
 
   height: 3rem;
-  width: 80%;
-  max-width: 1196px;
-
+  width: 100%;
   background-color: ${THEME.colors.branco};
   border-radius: 8px;
   margin: 10px 0;
@@ -38,13 +36,11 @@ const SContainer = styled.div`
   }
   @media ${THEME.media.tablet} {
     grid-template-columns: 40% auto auto 7% 7%;
-    width: 90%;
     font-size: 0.9rem;
     padding-left: 10px;
   }
   @media ${THEME.media.desktop} {
     grid-template-columns: 40% auto auto 7% 7%;
-    width: 90%;
     font-size: 0.95rem;
     padding-left: 12px;
   }

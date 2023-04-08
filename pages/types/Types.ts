@@ -6,4 +6,6 @@ export interface IRegistros {
   _id: string;
   id?: string;
   onClick?: () => void;
+  showForm?: (_id?: string) => void;
+  deleteRegistro?: (_id?: string) => void;
 }

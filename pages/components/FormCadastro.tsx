@@ -1,14 +1,12 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
-import FormContainer, {
-  BackgroundOpacity,
-  FormBox,
-} from '../css/FormCadastroStyled';
+import { BackgroundOpacity, ButtonEnviar, ButtonTipo, FormBox } from '../css/FormCadastroStyled';
 
 export interface FormCadastroProps {
   onClick: () => void;
+  itemIdForm?: string;
 }
 
-export default function FormCadastro({ onClick }: FormCadastroProps) {
+export default function FormCadastro({ onClick, itemIdForm }: FormCadastroProps) {
   const [descricao, setDescricao] = useState('');
   const [valor, setValor] = useState('');
   const [categoria, setCategoria] = useState('');
@@ -26,34 +24,6 @@ export default function FormCadastro({ onClick }: FormCadastroProps) {
   const handleTipoChange = (tipoSelecionado: string) => {
     setTipo(tipoSelecionado);
   };
-
-  // const handleSubmitChangeValue = async (event: FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   try {
-  //     const response = await fetch(`/api/MondoDB`, {
-  //       method: 'PUT',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({
-  //         descricao,
-  //         valor,
-  //         categoria,
-  //         tipo,
-  //       }),
-  //     });
-
-  //     if (response.ok) {
-  //       const novoRegistro = await response.json();
-  //       console.log('Registro atualizado:', novoRegistro);
-  //       // redirecionar o usuário para a página de lista de registros
-  //     } else {
-  //       console.log('Erro ao atualizar registro:', response.statusText);
-  //     }
-  //   } catch (error) {
-  //     console.log('Erro ao atualizar registro:', error);
-  //   }
-  // };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -73,37 +43,36 @@ export default function FormCadastro({ onClick }: FormCadastroProps) {
 
       if (response.ok) {
         const novoRegistro = await response.json();
-        console.log('Novo registro cadastrado:', novoRegistro);
       } else {
-        console.log('Erro ao cadastrar novo registro:', response.statusText);
       }
-    } catch (error) {
-      console.log('Erro ao cadastrar novo registro:', error);
-    }
+    } catch (error) {}
   };
 
   return (
     <>
-      <FormContainer>
-        <FormBox>
-          <h1>Cadastrar Transação</h1>
+      <FormBox onClick={() => {}}>
+        <span className="title">
+          {typeof itemIdForm === 'string'
+            ? `Editar Transação | ${itemIdForm}`
+            : 'Cadastrar Transação'}
+        </span>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="descricao"
+            id="descricao"
+            placeholder="Descrição"
+            onChange={handleDescricaoChange}
+          />
+          <input
+            type="text"
+            name="valor"
+            id="valor"
+            placeholder="Preço"
+            onChange={handleValorChange}
+          />
 
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="descricao"
-              id="descricao"
-              placeholder="Descrição"
-              onChange={handleDescricaoChange}
-            />
-            <input
-              type="text"
-              name="valor"
-              id="valor"
-              placeholder="Preço"
-              onChange={handleValorChange}
-            />
-
+          <ButtonTipo>
             <button
               type="button"
               id="Entrada"
@@ -112,7 +81,6 @@ export default function FormCadastro({ onClick }: FormCadastroProps) {
             >
               Entrada
             </button>
-
             <button
               type="button"
               id="Saida"
@@ -121,21 +89,23 @@ export default function FormCadastro({ onClick }: FormCadastroProps) {
             >
               Saída
             </button>
+          </ButtonTipo>
 
-            <input
-              name="categoria"
-              id="categoria"
-              onChange={handleCategoriaChange}
-            />
-            <button type="submit">Cadastrar</button>
-          </form>
-
-          <button type="button" onClick={onClick}>
-            Fechar
-          </button>
-        </FormBox>
-      </FormContainer>
-      <BackgroundOpacity />
+          <input
+            name="categoria"
+            id="categoria"
+            placeholder="Categoria"
+            onChange={handleCategoriaChange}
+          />
+          <ButtonEnviar type="submit" className="bt-cadastrar">
+            {typeof itemIdForm === 'string' ? 'Salvar Alteração' : 'Cadastrar'}
+          </ButtonEnviar>
+        </form>
+        <button type="button" onClick={onClick} className="bt-fechar">
+          X
+        </button>
+      </FormBox>
+      <BackgroundOpacity onClick={onClick} />
     </>
   );
 }
