@@ -13,6 +13,7 @@ const THEME = {
   fonts: {
     familyRoboto: "'Roboto', sans-serif",
     familyPoppins: "'Poppins', sans-serif",
+    familyRobotoCondensed: "'Roboto Condensed', sans-serif",
     sizeSmall: 10,
     sizeMedium: 12,
     sizeLarge: 14,
