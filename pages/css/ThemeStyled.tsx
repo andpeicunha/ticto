@@ -1,4 +1,4 @@
-const THEME = {
+export const THEME = {
   colors: {
     roxo900: '#30107d',
     roxo700: '#401a9b',
@@ -7,13 +7,14 @@ const THEME = {
     cinza300: '#b9b9b9',
     cinza700: '#484f55',
     red400: '#db3766',
+    red100: '#ffd9d9',
     green500: '#06D6A2',
+    green100: '#ccfff2',
     branco: '#ffffff',
   },
   fonts: {
     familyRoboto: "'Roboto', sans-serif",
     familyPoppins: "'Poppins', sans-serif",
-    familyRobotoCondensed: "'Roboto Condensed', sans-serif",
     sizeSmall: 10,
     sizeMedium: 12,
     sizeLarge: 14,
@@ -36,4 +37,3 @@ const THEME = {
     mobile: '(max-width: 767px)',
   },
 };
-export default THEME;

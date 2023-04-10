@@ -1,19 +1,26 @@
 import React from 'react';
-import LogoTicto from 'public/image/LogoTicto';
-import { FormCadastroProps } from './FormCadastro';
-import HeaderContainer, {
-  ButtonCadastro,
-  FaixaRoxa,
-  StyledLogo,
-} from '../css/CabecalhoStyled';
 
-export default function Header({ onClick }: FormCadastroProps) {
+import Image from 'next/image';
+
+// import LogoTicto from '/public/image/LogoTicto';
+
+import { HeaderContainer, ButtonCadastro, FaixaRoxa, StyledLogo } from '../css/CabecalhoStyled';
+
+import { FormCadastroProps } from './FormCadastro';
+
+export function Header({ onClick }: FormCadastroProps) {
   return (
     <>
-      <FaixaRoxa />
+      <FaixaRoxa data-testid="faixa-roxa" />
       <HeaderContainer>
         <StyledLogo data-testid="logotipo">
-          <LogoTicto />
+          <Image
+            src={'/image/logoTicto.png'}
+            alt={'Logotipo Ticto'}
+            height={69}
+            width={372}
+            priority
+          />
         </StyledLogo>
         <ButtonCadastro onClick={onClick} data-testid="botao-nova-transacao">
           Nova Transação

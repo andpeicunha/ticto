@@ -1,5 +1,5 @@
-import connectMongo from '../lib/dbConnect';
-import CadastroModel from '../models/CadastroModel'
+import { connectMongo } from '../lib/dbConnect';
+import { CadastroModel } from '../models/CadastroModel'
 import { ObjectId } from 'mongodb';
 
 
@@ -20,18 +20,6 @@ export default async function Cadastro(req, res) {
             }
             break;
 
-        case 'PUT':
-            try {
-                const id = new ObjectId(req.query.id);
-                const update = req.body;
-                await connectMongo();
-                const cadastros = await CadastroModel.findByIdAndUpdate(id, update, { new: true });
-                res.json({ cadastros });
-            } catch (error) {
-                res.json({ error });
-            }
-            break;
-
         case 'DELETE':
             try {
                 const id = new ObjectId(req.query.id);
@@ -45,9 +33,9 @@ export default async function Cadastro(req, res) {
 
         case 'POST':
             try {
-                const { descricao, valor, categoria, tipo } = req.body;
                 await connectMongo();
                 const cadastro = await CadastroModel.create(req.body);
+                console.log(cadastro);
                 res.json({ cadastro });
             } catch (error) {
                 res.json({ error });
@@ -56,7 +44,5 @@ export default async function Cadastro(req, res) {
         default:
             res.status(405).json({ error: 'Method Not Allowed' });
             break;
-
-
     }
 }

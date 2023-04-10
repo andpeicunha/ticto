@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import THEME from '@/pages/css/ThemeStyled';
 
-const SContainer = styled.div`
+import { THEME } from '@/pages/css/ThemeStyled';
+
+export const SContainer = styled.div`
   z-index: 10;
   display: grid;
   align-items: center;
@@ -16,36 +17,37 @@ const SContainer = styled.div`
   color: ${THEME.colors.cinza700};
   font-family: ${THEME.fonts.familyPoppins};
   font-size: 0.8rem;
+  text-align: left;
+
+  .data {
+    color: ${THEME.colors.cinza300};
+  }
 
   .green {
     color: ${THEME.colors.green500};
     font-weight: 600;
   }
+
   .red {
     color: ${THEME.colors.red400};
     font-weight: 600;
   }
 
   @media ${THEME.media.mobile} {
-    grid-template-columns: 48% auto 0 10% 10%;
-    width: 90%;
     margin: 7px 0;
-    .categoria {
-      visibility: hidden;
+    .valor {
+      text-align: right;
     }
   }
   @media ${THEME.media.tablet} {
-    grid-template-columns: 40% auto auto 7% 7%;
     font-size: 0.9rem;
     padding-left: 10px;
   }
   @media ${THEME.media.desktop} {
-    grid-template-columns: 40% auto auto 7% 7%;
     font-size: 0.95rem;
     padding-left: 12px;
   }
 `;
-export default SContainer;
 
 export const ButtonStyled = styled.button`
   background-color: transparent;

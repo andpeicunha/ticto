@@ -3,7 +3,8 @@ export interface IRegistros {
   valor: string;
   categoria: string;
   tipo: string;
-  _id: string;
+  data: string;
+  _id?: string;
   id?: string;
   onClick?: () => void;
   showForm?: (_id?: string) => void;

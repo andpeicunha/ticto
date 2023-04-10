@@ -1,7 +1,8 @@
-import THEME from '@/pages/css/ThemeStyled';
 import styled from 'styled-components';
 
-const HeaderContainer = styled.div`
+import { THEME } from '@/pages/css/ThemeStyled';
+
+export const HeaderContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: row;
@@ -30,12 +31,11 @@ const HeaderContainer = styled.div`
     padding: 0 ${THEME.spacing.medium}rem;
   }
 `;
-export default HeaderContainer;
 
 export const StyledLogo = styled.div`
   width: 186px;
   height: 34px;
-  svg {
+  img {
     width: 100%;
     height: 100%;
   }
@@ -86,5 +86,9 @@ export const FaixaRoxa = styled.div`
 
   @media ${THEME.media.desktop} {
     height: 160px;
+  }
+
+  @media ${THEME.media.desktopXl} {
+    height: 165px;
   }
 `;

@@ -17,8 +17,10 @@ const CadastroSchema = new Schema({
         type: String,
         required: true,
     },
+    data: {
+        type: Date,
+        required: true,
+    }
 })
 
-const CadastroModel = models.cadastros || model('cadastros', CadastroSchema)
-
-export default CadastroModel
+export const CadastroModel = models.cadastros || model('cadastros', CadastroSchema)

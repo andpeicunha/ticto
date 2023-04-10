@@ -6,15 +6,33 @@
     // "plugin:prettier/recommended"
   ],
   "rules": {
+    "import/order": [
+      "error",
+      {
+        "groups": [["builtin", "external"], "internal", "parent", "sibling", "index"],
+        "newlines-between": "always-and-inside-groups"
+      }
+    ],
     "linebreak-style": "off",
     "@typescript-eslint/quotes": "off",
-    "no-console": "off",
+    "no-console": "error",
     "object-curly-newline": "off",
     "implicit-arrow-linebreak": 0,
     "react/jsx-props-no-spreading": "off",
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "import/prefer-default-export": "off",
+    "import/no-default-export": "error",
+    "spaced-comment": ["error", "always"]
   },
   "parserOptions": {
     "project": "./tsconfig.json"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["index.tsx", "_app.tsx", "_document.tsx"],
+      "rules": {
+        "import/no-default-export": "off"
+      }
+    }
+  ]
 }
