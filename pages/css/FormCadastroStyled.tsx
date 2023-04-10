@@ -108,6 +108,16 @@ export const FormBox = styled.div`
   }
 `;
 
+export const ErrorMsg = styled.div`
+  width: 100%;
+  padding: 5px 5px 5px 10px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: ${THEME.colors.red400} !important;
+  background-color: ${THEME.colors.red100};
+`;
+
 export const ButtonTipo = styled.div`
   display: flex;
   flex-direction: row;

@@ -13,6 +13,7 @@
         "newlines-between": "always-and-inside-groups"
       }
     ],
+    "react/jsx-one-expression-per-line": "off",
     "linebreak-style": "off",
     "@typescript-eslint/quotes": "off",
     "no-console": "error",
@@ -22,7 +23,9 @@
     "no-underscore-dangle": "off",
     "import/prefer-default-export": "off",
     "import/no-default-export": "error",
-    "spaced-comment": ["error", "always"]
+    "spaced-comment": ["error", "always"],
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-page-custom-font": "off"
   },
   "parserOptions": {
     "project": "./tsconfig.json"

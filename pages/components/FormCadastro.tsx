@@ -3,7 +3,13 @@ import React, { ChangeEvent, FormEvent, useState } from 'react';
 import Image from 'next/image';
 
 import { IRegistros } from '../types/Types';
-import { BackgroundOpacity, ButtonEnviar, ButtonTipo, FormBox } from '../css/FormCadastroStyled';
+import {
+  BackgroundOpacity,
+  ButtonEnviar,
+  ButtonTipo,
+  ErrorMsg,
+  FormBox,
+} from '../css/FormCadastroStyled';
 
 import { CurrencyInput } from './inputs/Inputs';
 
@@ -18,7 +24,8 @@ export function FormCadastro({ onClick, onSubmit = () => {} }: FormCadastroProps
   const [valor, setValor] = useState('');
   const [categoria, setCategoria] = useState('');
   const [tipo, setTipo] = useState('');
-  const [data, setData] = useState(String(new Date()));
+  const [errorMessage, setErrorMessage] = useState(false);
+  const data = String(new Date());
 
   const handleDescricaoChange = (event: ChangeEvent<HTMLInputElement>) => {
     setDescricao(event.target.value);
@@ -30,13 +37,14 @@ export function FormCadastro({ onClick, onSubmit = () => {} }: FormCadastroProps
     setCategoria(event.target.value);
   };
   const handleTipoChange = (tipoSelecionado: string) => {
+    setErrorMessage(false);
     setTipo(tipoSelecionado);
   };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (tipo === '') {
-      alert('Selecione o Tipo Entrada ou Saída.');
+      setErrorMessage(true);
       return;
     }
     const novoRegistro = {
@@ -73,6 +81,7 @@ export function FormCadastro({ onClick, onSubmit = () => {} }: FormCadastroProps
             onChange={handleValorChange}
             data-testid="input-valor"
           />
+          {errorMessage && <ErrorMsg className="error">Selecione » Entrada ou Saída.</ErrorMsg>}
           <ButtonTipo>
             <button
               type="button"
