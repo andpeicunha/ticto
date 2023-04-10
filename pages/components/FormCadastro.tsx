@@ -2,19 +2,18 @@ import React, { ChangeEvent, FormEvent, useState } from 'react';
 
 import Image from 'next/image';
 
-import { CurrencyInput } from './inputs/Inputs';
 import { IRegistros } from '../types/Types';
 import { BackgroundOpacity, ButtonEnviar, ButtonTipo, FormBox } from '../css/FormCadastroStyled';
+
+import { CurrencyInput } from './inputs/Inputs';
 
 export interface FormCadastroProps {
   onClick: () => void;
   // eslint-disable-next-line react/require-default-props
-  itemIdForm?: string;
-  // eslint-disable-next-line react/require-default-props
   onSubmit?: (novoRegistro: IRegistros) => void;
 }
 
-export function FormCadastro({ onClick, itemIdForm = '', onSubmit = () => {} }: FormCadastroProps) {
+export function FormCadastro({ onClick, onSubmit = () => {} }: FormCadastroProps) {
   const [descricao, setDescricao] = useState('');
   const [valor, setValor] = useState('');
   const [categoria, setCategoria] = useState('');
@@ -82,7 +81,7 @@ export function FormCadastro({ onClick, itemIdForm = '', onSubmit = () => {} }: 
               className={tipo === 'Entrada' ? 'active' : ''}
               onClick={() => handleTipoChange('Entrada')}
             >
-              <Image src={'/image/icon-circle-green.png'} alt={''} height={20} width={20} /> Entrada
+              <Image src="/image/icon-circle-green.png" alt="" height={20} width={20} /> Entrada
             </button>
 
             <button
@@ -91,7 +90,7 @@ export function FormCadastro({ onClick, itemIdForm = '', onSubmit = () => {} }: 
               className={tipo === 'Saida' ? 'active' : ''}
               onClick={() => handleTipoChange('Saida')}
             >
-              <Image src={'/image/icon-circle-red.png'} alt={''} height={20} width={20} /> Saída
+              <Image src="/image/icon-circle-red.png" alt="" height={20} width={20} /> Saída
             </button>
           </ButtonTipo>
           <input
@@ -108,7 +107,7 @@ export function FormCadastro({ onClick, itemIdForm = '', onSubmit = () => {} }: 
           </ButtonEnviar>
         </form>
 
-        <button type="button" onClick={onClick} className="bt-fechar" data-testid='bt-fechar'>
+        <button type="button" onClick={onClick} className="bt-fechar" data-testid="bt-fechar">
           X
         </button>
       </FormBox>

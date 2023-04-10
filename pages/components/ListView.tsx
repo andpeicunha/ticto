@@ -5,18 +5,11 @@ import { IRegistros } from '../types/Types';
 import { SContainer, ButtonStyled } from '../css/ListViewStyled';
 
 export function Item({ ...props }: IRegistros) {
-  const data_hora = new Date(props.data);
-  const options = {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  };
-  const data_hora_formatada =
-    data_hora.toLocaleDateString('pt-BR') +
+  const dataHora = new Date(props.data);
+  const dataHoraFormatada =
+    dataHora.toLocaleDateString('pt-BR') +
     ' às ' +
-    data_hora.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+    dataHora.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
   return (
     <SContainer className="grid">
@@ -39,7 +32,7 @@ export function Item({ ...props }: IRegistros) {
       </div>
 
       <div className="data" data-testid="listview-date-insert">
-        {data_hora_formatada}
+        {dataHoraFormatada}
       </div>
 
       <ButtonStyled type="button" data-testid="excluir">

@@ -147,13 +147,7 @@ export function List() {
           />
         ))}
       </ItemList>
-      {formVisible && (
-        <FormCadastro
-          onSubmit={handleSubmitFormCreate}
-          onClick={hideForm}
-          itemIdForm={itemIdForm}
-        />
-      )}
+      {formVisible && <FormCadastro onSubmit={handleSubmitFormCreate} onClick={hideForm} />}
     </>
   );
 }

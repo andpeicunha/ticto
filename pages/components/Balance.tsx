@@ -38,7 +38,7 @@ export function Balance({ totalEntradas, totalSaidas, isLoading }: SomaTotais) {
           <span className="value">{totalEntradasFormatado}</span>
         )}
       </Entradas>
-      <div id="space"></div>
+      <div id="space" />
 
       <Saidas>
         <span className="title">
@@ -51,7 +51,7 @@ export function Balance({ totalEntradas, totalSaidas, isLoading }: SomaTotais) {
           <span className="value">{totalSaidasFormatado}</span>
         )}
       </Saidas>
-      <div id="space"></div>
+      <div id="space" />
 
       <Saldo className={saldo < 0 ? 'negativo' : ''} data-testid="balance-saldo">
         <span className="title" data-testid="title-balance-saldo">

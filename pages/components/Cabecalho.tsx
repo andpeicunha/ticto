@@ -14,13 +14,7 @@ export function Header({ onClick }: FormCadastroProps) {
       <FaixaRoxa data-testid="faixa-roxa" />
       <HeaderContainer>
         <StyledLogo data-testid="logotipo">
-          <Image
-            src={'/image/logoTicto.png'}
-            alt={'Logotipo Ticto'}
-            height={69}
-            width={372}
-            priority
-          />
+          <Image src="/image/logoTicto.png" alt="Logotipo Ticto" height={69} width={372} priority />
         </StyledLogo>
         <ButtonCadastro onClick={onClick} data-testid="botao-nova-transacao">
           Nova Transação
